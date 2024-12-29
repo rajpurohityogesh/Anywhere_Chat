@@ -3,10 +3,11 @@ import { Redirect } from "react-router-dom";
 import io from "socket.io-client";
 import { UserContext } from "../../UserContext";
 import RoomList from "./RoomList";
+import config from "../../config";
 let socket;
 
 const Home = () => {
-  const ENDPT = "localhost:5000";
+  const ENDPT = config.BACKEND_BASE_URL;
   const { user, setUser } = useContext(UserContext);
   const [room, setRoom] = useState("");
   const [rooms, setRooms] = useState([]);

@@ -5,11 +5,12 @@ import { UserContext } from "../../UserContext";
 import Messages from "./Messages";
 import Input from "./Input";
 import "./Chat.css";
+import config from "../../config";
 
 let socket;
 
 const Chat = () => {
-  const ENDPT = "localhost:5000";
+  const ENDPT = config.BACKEND_BASE_URL;
   const { room_id, room_name } = useParams();
   const { user, setUser } = useContext(UserContext);
   const [message, setMessage] = useState("");

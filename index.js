@@ -37,6 +37,9 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 if(process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
+app.use((req, res) => {
+  res.redirect('/');
+});
 
 
 mongoose
