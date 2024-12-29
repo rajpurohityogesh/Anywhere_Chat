@@ -21,7 +21,7 @@ const PORT = process.env.PORT || 5000;
 const MongoDB = 
   "mongodb+srv://"+process.env.ATLAS_USER+":"+process.env.ATLAS_PASSWORD+"@"+process.env.ATLAS_CLUSTER+"/chat-database?retryWrites=true&w=majority";
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: ["http://localhost:3000", "https://anywhere-chat.onrender.com"],
   credentials: true,
   optionSuccessStatus: 200,
 };
