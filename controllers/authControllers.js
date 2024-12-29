@@ -55,7 +55,6 @@ module.exports.verifyUser = (req, res, next) => {
   const token = req.cookies.jwt;
   if (token) {
     jwt.verify(token, "chatroom secret", async (err, decodedToken) => {
-      console.log("decoded Token", decodedToken);
       if (err) {
         console.log(err.message);
       } else {

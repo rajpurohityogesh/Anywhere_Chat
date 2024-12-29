@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { UserContext } from "../../UserContext";
 import { Redirect } from "react-router-dom";
+import config from "../../config";
 
 const Signup = () => {
   const { user, setUser } = useContext(UserContext);
@@ -17,7 +18,7 @@ const Signup = () => {
     setPasswordError("");
     console.log(name, email, password);
     try {
-      const res = await fetch("http://localhost:5000/signup", {
+      const res = await fetch(`${config.BACKEND_BASE_URL}/signup`, {
         method: "POST",
         credentials: "include",
         body: JSON.stringify({ name, email, password }),

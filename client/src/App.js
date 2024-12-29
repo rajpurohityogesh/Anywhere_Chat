@@ -7,13 +7,14 @@ import Home from "./components/home/Home";
 import Navbar from "./components/layout/Navbar";
 import Login from "./components/auth/Login";
 import Signup from "./components/auth/Signup";
+import config from "./config";
 
 function App() {
   const [user, setUser] = useState(null);
   useEffect(() => {
     const verifyUser = async () => {
       try {
-        const res = await fetch("http://localhost:5000/verifyUser", {
+        const res = await fetch(`${config.BACKEND_BASE_URL}/verifyUser`, {
           credentials: "include",
           headers: { "Content-Type": "application/json" },
         });

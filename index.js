@@ -46,12 +46,10 @@ app.get("/set-cookies", (req, res) => {
 
 app.get("/get-cookies", (req, res) => {
   const cookies = req.cookies;
-  console.log(cookies);
   res.json(cookies);
 });
 
 io.on("connection", (socket) => {
-  console.log(socket.id);
   Room.find().then((result) => {
     socket.emit("output-rooms", result);
   });

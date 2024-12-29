@@ -6,7 +6,6 @@ const addUser = ({socket_id, name, user_id, room_id}) => {
     }
     const user = {socket_id,name,user_id,room_id};
     users.push(user);
-    console.log("User List : ", users);
     return {user};
 }
 
