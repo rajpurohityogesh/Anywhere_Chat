@@ -34,7 +34,9 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(authRoutes);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
-
+if(process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
 
 
 mongoose

@@ -2,7 +2,7 @@ const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 const maxAge = 5 * 24 * 60 * 60; //In Seconds
 const createJWT = (id) => {
-  return jwt.sign({ id }, "chatroom secret", { expiresIn: maxAge });
+  return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: maxAge });
 };
 const alertError = (err) => {
   console.log(err);
@@ -57,7 +57,7 @@ module.exports.verifyUser = (req, res, next) => {
   // #swagger.tags = ['Auth']
   const token = req.cookies.jwt;
   if (token) {
-    jwt.verify(token, "chatroom secret", async (err, decodedToken) => {
+    jwt.verify(token, process.env.JWT_SECRET, async (err, decodedToken) => {
       if (err) {
         console.log(err.message);
       } else {
