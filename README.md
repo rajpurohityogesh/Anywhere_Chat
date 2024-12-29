@@ -36,9 +36,23 @@ Create a `.env` file in the root directory with the following variables:
 
 Follow these steps to deploy Anywhere_Chat on Render:
 
-### **1. Build the Project for Production**
-
-- First, make a production build of your React app using:
+### **- First, make a production build of your React app using:**
 
   ```bash
   npm run prod_build
+  ```
+
+### **- Push your changes and build folder to prod**
+
+### **- From Render UI add below environment variables**
+
+- `ATLAS_USER`
+- `ATLAS_PASSWORD`
+- `ATLAS_CLUSTER`
+- `JWT_SECRET`
+- `HOST_ENDPOINT` -- prodction endpoint
+- `SW_SCHEMES` -- prodction protocol
+- `NODE_ENV`=production
+- `PORT`=5000
+
+### **- Run production deployment from Render UI**
