@@ -8,7 +8,8 @@
     "client:build": "cd client && npm run build",
     "swagger": "node ./config/swagger.js",
     "start": "npm run swagger && nodemon index.js",
-    "prod": "npm run client:install && npm run client:build && npm run swagger && node index.js",
+    "prod_build": "npm run client:install && npm run client:build",
+    "prod": "npm run swagger && node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

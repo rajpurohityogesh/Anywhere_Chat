@@ -18,6 +18,7 @@
   "scripts": {
     "start": "react-scripts --openssl-legacy-provider start",
     "build": "react-scripts --openssl-legacy-provider build",
+    "prod_build": "npm run install && npm run build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
