@@ -6,8 +6,8 @@ const authRoutes = require("./routes/authRoutes");
 const http = require("http").createServer(app);
 const socketIo = require("socket.io");
 require("dotenv").config();
-const MongoDB =
-  "mongodb+srv://"+process.env.ATLAS_USER+":"+process.env.ATLAS_PASSWORD+"@cluster0.4ima9.mongodb.net/chat-database?retryWrites=true&w=majority";
+const MongoDB = 
+  "mongodb+srv://"+process.env.ATLAS_USER+":"+process.env.ATLAS_PASSWORD+"@"+process.env.ATLAS_CLUSTER+"/chat-database?retryWrites=true&w=majority";
 const mongoose = require("mongoose");
 const { addUser, getUser, removeUser } = require("./helper");
 const io = socketIo(http);
