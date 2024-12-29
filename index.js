@@ -1,29 +1,41 @@
+require("dotenv").config();
 const express = require("express");
-const app = express();
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
-const authRoutes = require("./routes/authRoutes");
-const http = require("http").createServer(app);
 const socketIo = require("socket.io");
-require("dotenv").config();
-const MongoDB = 
-  "mongodb+srv://"+process.env.ATLAS_USER+":"+process.env.ATLAS_PASSWORD+"@"+process.env.ATLAS_CLUSTER+"/chat-database?retryWrites=true&w=majority";
 const mongoose = require("mongoose");
+const swaggerUi = require('swagger-ui-express');
+
+const swaggerFile = require('./config/swagger-output.json'); // Path to generated file
+const authRoutes = require("./routes/authRoutes");
 const { addUser, getUser, removeUser } = require("./helper");
-const io = socketIo(http);
-const PORT = process.env.PORT || 5000;
 const Room = require("./models/Room");
 const Message = require("./models/Message");
+
+
+
+const app = express();
+const http = require("http").createServer(app);
+const io = socketIo(http);
+const PORT = process.env.PORT || 5000;
+const MongoDB = 
+  "mongodb+srv://"+process.env.ATLAS_USER+":"+process.env.ATLAS_PASSWORD+"@"+process.env.ATLAS_CLUSTER+"/chat-database?retryWrites=true&w=majority";
 const corsOptions = {
   origin: "http://localhost:3000",
   credentials: true,
   optionSuccessStatus: 200,
 };
 
+
+
+
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
 app.use(authRoutes);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
+
+
 
 mongoose
   .connect(MongoDB, {
@@ -33,6 +45,9 @@ mongoose
   })
   .then(() => console.log("Connected to Database"))
   .catch((err) => console.log(err));
+
+
+
 
 app.get("/set-cookies", (req, res) => {
   try {
@@ -48,6 +63,8 @@ app.get("/get-cookies", (req, res) => {
   const cookies = req.cookies;
   res.json(cookies);
 });
+
+
 
 io.on("connection", (socket) => {
   Room.find().then((result) => {
@@ -94,6 +111,8 @@ io.on("connection", (socket) => {
     });
   });
 });
+
+
 
 http.listen(PORT, () => {
   console.log("Listening on port " + PORT);

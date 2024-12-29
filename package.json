@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "swagger": "node ./config/swagger.js",
+    "start": "npm run swagger && nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -20,6 +21,8 @@
     "mongoose": "^5.12.3",
     "nodemon": "^2.0.12",
     "socket.io": "^2.3.0",
+    "swagger-autogen": "^2.23.7",
+    "swagger-ui-express": "^5.0.1",
     "validator": "^13.5.2"
   }
 }

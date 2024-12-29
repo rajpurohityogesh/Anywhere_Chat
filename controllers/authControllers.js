@@ -25,6 +25,7 @@ const alertError = (err) => {
 };
 
 module.exports.signup = async (req, res) => {
+  // #swagger.tags = ['Auth']
   const { name, email, password } = req.body;
   try {
     const user = await User.create({ name, email, password });
@@ -38,6 +39,7 @@ module.exports.signup = async (req, res) => {
   }
 };
 module.exports.login = async (req, res) => {
+  // #swagger.tags = ['Auth']
   const { email, password } = req.body;
   try {
     const user = await User.login(email, password);
@@ -52,6 +54,7 @@ module.exports.login = async (req, res) => {
 };
 
 module.exports.verifyUser = (req, res, next) => {
+  // #swagger.tags = ['Auth']
   const token = req.cookies.jwt;
   if (token) {
     jwt.verify(token, "chatroom secret", async (err, decodedToken) => {
@@ -68,6 +71,7 @@ module.exports.verifyUser = (req, res, next) => {
   }
 };
 module.exports.logout = (req, res) => {
+  // #swagger.tags = ['Auth']
   res.cookie("jwt", "", { maxAge: 1 });
   res.status(200).json({ logout: true });
 };
