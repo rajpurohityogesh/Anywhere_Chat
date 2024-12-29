@@ -17,8 +17,8 @@
   },
   "scripts": {
     "start": "react-scripts --openssl-legacy-provider start",
-    "build": "react-scripts --openssl-legacy-provider build",
-    "prod_build": "npm run install && npm run build",
+    "build": "env-cmd -f .env react-scripts --openssl-legacy-provider build",
+    "prod_build": "npm install && env-cmd -f .env.production react-scripts --openssl-legacy-provider build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

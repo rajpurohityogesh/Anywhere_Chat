@@ -4,11 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "client:install": "cd client && npm install",
-    "client:build": "cd client && npm run build",
     "swagger": "node ./config/swagger.js",
     "start": "npm run swagger && nodemon index.js",
-    "prod_build": "npm run client:install && npm run client:build",
+    "build": "cd client && npm run build",
+    "prod_build": "cd client && npm run prod_build",
     "prod": "npm run swagger && node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
