@@ -1,13 +1,18 @@
 import React from "react";
+import { Link } from "react-router-dom/cjs/react-router-dom";
 
 const SignedOutMenu = () => {
   return (
     <>
       <li>
-        <a href="/login">LogIN</a>
+        <Link to={"/login"}>
+          LogIN
+        </Link>
       </li>
       <li>
-        <a href="/signup">SignUp</a>
+        <Link to={"/signup"}>
+          SignUp
+        </Link>
       </li>
     </>
   );
